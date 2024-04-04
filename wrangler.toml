@@ -1,0 +1,17 @@
+name = "unity-cf-relay"
+compatibility_date = "2024-01-01"
+
+main = "src/main.ts"
+
+[[durable_objects.bindings]]
+name = "Rooms"
+class_name = "Rooms"
+
+[[migrations]]
+tag = "v1"
+new_classes = ["Rooms"]
+
+[[rules]]
+type = "Data"
+globs = ["**/*.html"]
+fallthrough = false
