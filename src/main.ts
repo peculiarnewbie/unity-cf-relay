@@ -178,7 +178,9 @@ This Durable Object supports the following endpoints:
 	async webSocketMessage(ws: WebSocket, message: ArrayBuffer | string) {
 		// Upon receiving a message from the client, reply with the same message,
 		// but will prefix the message with "[Durable Object]: ".
-		ws.send(`[Durable Object]: ${message}`);
+		this.state.getWebSockets().forEach((ws) => {
+			ws.send(message);
+		});
 	}
 
 	async webSocketClose(
